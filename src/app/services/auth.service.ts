@@ -1,3 +1,4 @@
+import { User } from './../classes/user';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
@@ -5,13 +6,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
-import { User } from '../classes/user';
+
 
 @Injectable()
 export class AuthService {
 
   user$: Observable<User>;
-
   constructor(private afAuth: AngularFireAuth,
       private afs: AngularFirestore,
       private router: Router) {
@@ -19,26 +19,68 @@ export class AuthService {
     this.user$ = this.afAuth.authState
         .switchMap(user => {
             if (user) {
-               return this.afs.doc<User>('users/${user.uid}').valueChanges();
+              console.log(user.uid);
+               return this.afs.doc<User>('users/' + user.uid).valueChanges();
             } else {
               return Observable.of(null);
             }
         });
+
   }
 
   ///// Login
 
 
   emailLogin(credentials: EmailPasswordCredentials) {
-    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
-               .then(() => console.log('success'))
+    this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
+               .then(() => {
+                console.log('success');
+                // console.log(this.afAuth.auth.currentUser.uid);
+                // this.afs.doc(`users/${this.afAuth.auth.currentUser.uid}`)
+                // .valueChanges().subscribe(res => {
+
+                // });
+
+                // this.user$.subscribe(user => this.user = user);
+                // console.log(this.user);
+              })
                .catch(error => console.log(error));
   }
 
   signOut() {
     this.afAuth.auth.signOut();
   }
+  ///// Role-based Authorization //////
 
+canRead(user: User): boolean {
+  const allowed = ['admin', 'editor', 'subscriber'];
+  return this.checkAuthorization(user, allowed);
+}
+
+canEdit(user: User): boolean {
+  const allowed = ['admin', 'editor'];
+  return this.checkAuthorization(user, allowed);
+}
+
+canDelete(user: User): boolean {
+  const allowed = ['admin'];
+  return this.checkAuthorization(user, allowed);
+}
+
+
+
+// determines if user has matching role
+private checkAuthorization(user: User, allowedRoles: string[]): boolean {
+  if (!user) {
+    return false;
+  }
+  for (const role of allowedRoles) {
+    if ( user.roles[role] ) {
+      return true;
+    }
+  }
+  return false;
+}
 }
 
 export class EmailPasswordCredentials {
