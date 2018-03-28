@@ -26,7 +26,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreModule } fr
     ReactiveFormsModule,
     FormsModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

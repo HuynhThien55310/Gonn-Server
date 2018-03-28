@@ -1,3 +1,4 @@
+import { User } from './../../classes/user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -25,6 +26,8 @@ export class LoginFormComponent implements OnInit {
     }
   };
 
+  user: User;
+
   constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
 
   ngOnInit() {
@@ -33,6 +36,12 @@ export class LoginFormComponent implements OnInit {
 
   login(): void {
     this.auth.emailLogin(this.loginForm.value);
+    this.auth.user$.subscribe(user => {
+      if (this.auth.canDelete(user)) {
+          console.log('admin');
+      }
+    });
+
   }
 
 
