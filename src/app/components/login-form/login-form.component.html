@@ -18,5 +18,5 @@
   <button type="submit"  [disabled]="!loginForm.valid">Submit</button>
 
   <span *ngIf="loginForm.valid" >Form is valid</span>
-
+  <span *ngIf="isReader">Access denied</span>
 </form>

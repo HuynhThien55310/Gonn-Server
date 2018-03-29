@@ -1,3 +1,5 @@
+import { AddFoodComponent } from './components/add-food/add-food.component';
+import { HomeComponent } from './components/home/home.component';
 import { FoodListComponent } from './components/food-list/food-list.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,8 +12,12 @@ const appRoutes: Routes = [
     component: LoginFormComponent
   },
   {
-    path: 'test',
-    component: FoodListComponent
+    path: 'food',
+    component: AddFoodComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
   },
   { path: '**',
     redirectTo: '/'

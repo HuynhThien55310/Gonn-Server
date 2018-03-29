@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../classes/user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
@@ -25,10 +26,10 @@ export class LoginFormComponent implements OnInit {
       'required':      'Mật khẩu không được trống.'
     }
   };
-
+  isReader = false;
   user: User;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.buildForm();
@@ -37,11 +38,12 @@ export class LoginFormComponent implements OnInit {
   login(): void {
     this.auth.emailLogin(this.loginForm.value);
     this.auth.user$.subscribe(user => {
-      if (this.auth.canDelete(user)) {
-          console.log('admin');
+      if (!this.auth.canDelete(user) && !this.auth.canEdit(user)) {
+          this.isReader = true;
+      } else {
+        this.router.navigate(['food']);
       }
     });
-
   }
 
 
