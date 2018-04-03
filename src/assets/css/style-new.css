@@ -1,4 +1,21 @@
 @media (min-width: 768px){
+	.landing-cover {
+		width: 100%;
+		background: #00E640;
+		height: 100vh;
+		
+	}
+	.header.container {
+		padding: 20px 10%;
+		background: #fff0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+	}	
+	.cover-content {
+		padding-top: 12vh;
+	}
 	.login-cover-background {
 		position: absolute;
 		top: 0;
@@ -75,5 +92,10 @@ span.psw {
 }
 .back-container {
 	padding-top: 5px;
+}
+img.model {
+    width: 75%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 }
