@@ -1,4 +1,4 @@
-    
+
 .detail-container {
     margin-top: 50px;
     background-color: #f9f9f9;
@@ -33,13 +33,13 @@
     border-radius: 10px 10px 0px 0px;
 }
 .post-detail {
-    margin-bottom: 50px;	
+    margin-bottom: 50px;
 }
 .content-container {
     border-top: none;
     border: solid 1px #ccc;
     background-color: #fff;
-    padding: 10px;  
+    padding: 10px;
 }
 .content-detail {
     text-align: justify;
@@ -50,7 +50,7 @@
     padding-right: 10px;
 }
 .date-of-post {
-    text-align: right;    
+    text-align: right;
 }
 .date-of-post h3 {
     font-size: 18px;
@@ -66,7 +66,7 @@ span.post-act-detail {
     font-size: 18px;
 }
 .post-interact-container {
-    text-align: center;    
+    text-align: center;
 }
 .circle {
 	line-height: 0;		/* remove line-height */
@@ -108,7 +108,7 @@ a.circle {
 .comment-box img {
     float: left;
 }
-.comment-item p {   
+.comment-item p {
     float: right;
     font-size: 17px;
 }
@@ -179,10 +179,10 @@ span.cmt-date {
     display: block;
 }
 
-#img-upload{   
-    object-fit: cover;    
-    width: 100%; 
-    border: solid 1px #eee;   
+#img-upload{
+    object-fit: cover;
+    width: 100%;
+    border: solid 1px #eee;
     box-shadow: 0px 0px 5px #222;
     position: absolute;
     top: 0;
@@ -307,7 +307,7 @@ button#google-login-button:hover {
     margin-right: 30%;
 }
 .forgot-pass {
-   
+
     margin-bottom: 10px;
     padding-left: 13px;
 }
@@ -338,9 +338,7 @@ button#google-login-button:hover {
 	border-color: #aed4e4;
 	color: #222222;
 }
-.left-section.col-md-3.col-lg-3 {
-    position: fixed;
-}
+
 .image-container {
     background-image: url("https://lh3.googleusercontent.com/5TQ7l4viJspkmksLd_GizIQJSnvOElzsD1k4jGV31OdD5rTrxqmujHzcedqj8n2VZBUzC3FFB5Sl8uTj4O2gYDoyWBrHOYV5OWQ4gaK9uIqwPKZpxL9hF4JA8TlN47sR1sTP3i22M0Q7rdK-wzlYRIcy2ZlKoZ1sLM5LNC4D-DmgtJNQWf7pNOGSrvzfuMEFbngVngIkKOjsFRkkb-if2hIYw5srDceGDJ2lX_7MbHAhwOTeM7PQQIgF5ZwXDd_8lwwshYKwS9haAeCA49eOQ-N_865gm1LMr2LpOXG05NDPVkrYxl5i-W_XINi74UklbU7e-eZ1ZPb-z4XMu8vugVNzvKDdgrNOZz8iQWewU7EteU0Ft5Vh9ntQ5nVF3n0EhDVW0eltj_zKeEfXQWSiSVT2Wv7J1GZFVSqkJvI9qBXAFVeeIrSmC2_qN5VTP0iilAxPyG4WTrOGYB2Nx9--Y4iGEqteGtm95Duf1aN36UD6m7B4CH2iaKsZjurt017oWSzvG2sPOeF-PsLMOViKjLtSU3B9yMBjRHiWS9k4GQe78gW8HwxYsBX8fY8NtbEikfjqlJhtt7dgD1rDLwmlILUkof8y0kuwjKQwhmnolg=w684-h385-no");
 }

@@ -1,3 +1,46 @@
-<p>
-  food-list works!
-</p>
+
+
+  <button mat-raised-button (click)="addFood()">Thêm</button>
+  <button mat-raised-button (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
+  <button mat-raised-button (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
+
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
+    <mat-cell *matCellDef="let row; let ind = index">
+      <mat-checkbox
+      (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
+        <mat-cell *matCellDef="let element" > {{element.title}} </mat-cell>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="backdrop">
+        <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <img src="{{element.backdrop}}" style="width: 100px"></mat-cell>
+      </ng-container>
+
+      <!-- Unit Column -->
+      <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef> Tác giả </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="postedAt">
+        <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
+    </mat-table>
+  </div>

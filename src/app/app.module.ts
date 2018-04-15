@@ -1,10 +1,12 @@
+import { IngredientService } from './services/ingredient.service';
+import { EditFoodComponent } from './components/edit-food/edit-food.component';
 import { FoodService } from './services/food.service';
 import { FoodListComponent } from './components/food-list/food-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
@@ -16,10 +18,13 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreModule } fr
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddFoodComponent } from './components/add-food/add-food.component';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TagInputModule } from 'ngx-chips';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddIngredientComponent } from './components/add-ingredient/add-ingredient.component';
+import { QuillModule } from 'ngx-quill';
+import { MatInputModule, MatFormFieldModule, MatTableModule, MatButtonModule, MatSelectModule, MatOptionModule } from '@angular/material';
+import { MatCheckboxModule } from '@angular/material';
 TagInputModule.withDefaults({
   tagInput: {
     secondaryPlaceholder: 'Nhập loại món ăn'
@@ -33,11 +38,16 @@ TagInputModule.withDefaults({
     FoodListComponent,
     HomeComponent,
     NavbarComponent,
-    AddFoodComponent
+    AddFoodComponent,
+    AddIngredientComponent,
+    EditFoodComponent,
+
 
   ],
   imports: [
     BrowserModule,
+    MatInputModule,
+    MatFormFieldModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ReactiveFormsModule,
@@ -45,10 +55,16 @@ TagInputModule.withDefaults({
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
     TagInputModule,
-    CKEditorModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatButtonModule,
+    QuillModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatCheckboxModule
   ],
-  providers: [AuthService, FoodService],
+  providers: [AuthService, FoodService, IngredientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

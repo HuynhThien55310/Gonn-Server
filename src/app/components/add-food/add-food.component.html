@@ -37,8 +37,9 @@
         </div>
       </div>
       <div class="right-section col-md-9 col-lg-9">
-        <form [formGroup]="form" (submit)="onSubmit()">
+        <form [formGroup]="form" >
           <div class="container-fluid">
+
             <div class="container col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-md-10 col-sm-10 col-lg-10">
               <div class="title-container form-group">
                 <label for="title">Tiêu đề</label>
@@ -46,11 +47,68 @@
               </div>
               <div class="title-container form-group">
                 <label for="backdrop">Ảnh bìa</label>
-                <input name="backdrop" id="" placeholder="Link ảnh bìa" [(ngModel)]="food.backdrop" formControlName="backdrop">
+                <input name="backdrop" id="" type="file" placeholder="Link ảnh bìa"
+                accept="image/*" (change)="changeListener($event)" formControlName="backdrop">
               </div>
               <div class="image-container form-group">
                 <img height="" width="" id='img-upload' src="{{food.backdrop}}" />
               </div>
+              <div class="title-container form-group">
+                <form [formGroup]="ingreForm">
+                  <mat-form-field>
+                    <input matInput placeholder="Tên" [(ngModel)] = "ingre.name"  formControlName="name" required>
+                  </mat-form-field>
+                  <mat-select placeholder="Đơn vị" style="width: 100px" [(ngModel)]="ingre.unit" formControlName = "unit">
+                    <mat-option *ngFor="let unit of units" [value]="unit.value" >
+                      {{ unit.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-form-field>
+                    <input matInput placeholder="Số lượng" [(ngModel)] = "ingre.amount"  formControlName="amount" required pattern="[0-9]+">
+                  </mat-form-field>
+                  <button mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
+                  <button mat-raised-button (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
+                  <button mat-raised-button (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
+                  </form>
+                  <div class="example-container mat-elevation-z8">
+                    <mat-table #table [dataSource]="dataSource">
+                  <!-- Checkbox Column -->
+                  <ng-container matColumnDef="select">
+                    <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
+                    <mat-cell *matCellDef="let row; let ind = index">
+                      <mat-checkbox
+                      (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
+                      </mat-checkbox>
+                    </mat-cell>
+                  </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Tên </mat-header-cell>
+                        <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
+                      </ng-container>
+
+
+
+                      <!-- Unit Column -->
+                      <ng-container matColumnDef="unit">
+                        <mat-header-cell *matHeaderCellDef> Đơn vị </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
+                      </ng-container>
+
+                      <!-- Amount Column -->
+                      <ng-container matColumnDef="amount">
+                        <mat-header-cell *matHeaderCellDef> Số lượng </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
+                    </mat-table>
+                  </div>
+              </div>
+
+
               <div class="tag-container form-group">
                 <label for="tagsinput">Loại món ăn</label>
                 <tag-input [(ngModel)]="tags" [editable]="true" formControlName="tags" placeholder="Nhập loại món ăn">
@@ -60,13 +118,15 @@
                 <label for="content">Nội dung</label>
               </div>
               <div class="editor-container form-group">
-                <ckeditor [(ngModel)]="food.body" formControlName="body">
-                </ckeditor>
+                <quill-editor [style]="{height: '200px'}" [(ngModel)]="food.body" formControlName="body">
+
+                </quill-editor>
+
               </div>
 
               <div class="add-action-container form-group">
                 <div class="left-btn btn-save">
-                  <button type="submit">Lưu</button>
+                  <button mat-raised-button (click) = 'onSubmit()'>Lưu</button>
                   <span>{{message}}</span>
                 </div>
               </div>

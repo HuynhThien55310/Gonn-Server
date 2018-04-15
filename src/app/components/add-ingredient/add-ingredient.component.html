@@ -1,0 +1,59 @@
+<form [formGroup]="ingreForm">
+<mat-form-field>
+  <input matInput placeholder="Tên" [(ngModel)] = "ingre.name"  formControlName="name" required>
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Giá" [(ngModel)] = "ingre.price"  formControlName="price" required pattern="[0-9]+">
+</mat-form-field>
+<mat-select placeholder="Đơn vị" style="width: 100px" [(ngModel)]="ingre.unit" formControlName = "unit">
+  <mat-option *ngFor="let unit of units" [value]="unit.value" >
+    {{ unit.viewValue }}
+  </mat-option>
+</mat-select>
+<mat-form-field>
+  <input matInput placeholder="Số lượng" [(ngModel)] = "ingre.amount"  formControlName="amount" required pattern="[0-9]+">
+</mat-form-field>
+<button mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
+<button mat-raised-button (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
+<button mat-raised-button (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
+</form>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+<!-- Checkbox Column -->
+<ng-container matColumnDef="select">
+  <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
+  <mat-cell *matCellDef="let row; let ind = index">
+    <mat-checkbox
+    (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
+    </mat-checkbox>
+  </mat-cell>
+</ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Tên </mat-header-cell>
+      <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Giá </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+    <!-- Unit Column -->
+    <ng-container matColumnDef="unit">
+      <mat-header-cell *matHeaderCellDef> Đơn vị </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
+    </ng-container>
+
+    <!-- Amount Column -->
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef> Số lượng </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
+  </mat-table>
+</div>
