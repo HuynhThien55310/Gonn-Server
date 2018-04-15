@@ -1,1 +1,137 @@
+<<<<<<< HEAD
 
+=======
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Varela+Round');
+@media (min-width: 768px){
+    /* Header */
+h2.logo {
+    text-align: center;
+    float: left;
+    margin: 0;
+}
+.menu-container {
+    padding: 8px 0;
+    float: left;
+    text-align: center;
+}
+.menu li {
+    display: inline;
+    padding: 0 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;    
+}
+.col-lg-2.login {
+    padding: 8px;
+    float: left;
+    text-align: center;
+}
+ul.menu {
+    margin: 0;
+}
+a.header-menu {
+    color: #fff;
+    font-family: 'Comfortaa';
+    font-weight: bold;
+}
+a.header-menu:hover{
+    color: #990001;
+    transition: all ease 0.4s;
+}
+a.header-menu:hover {
+    text-decoration: none;
+}
+a.login-btn {
+    padding: 7px 25px;
+    background: #ffffff;
+    border-radius: 4px;
+    color: #1E824C;
+    font-family: 'Varela Round';
+}
+a.login-btn:hover {
+    text-decoration: none;
+    background: #ffffffe8;
+    transition: all ease 0.3s;
+}
+
+.cover-background {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background: #00E640;
+    z-index: -1;
+}
+.cover {
+    padding-top: 20px;   
+}
+img.download {
+    border-radius: 10px;
+}
+img.download:hover {
+    box-shadow: 0px 2px 4px 0px #403307;
+    transition: all ease 0.3s;
+}
+img.model {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.content {
+    padding-top: 15%;
+    padding-left: 20%;
+}
+.content h2 {
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+    color: #FFFFF8;
+    font-size: 45px;
+}
+.content p {
+    padding-left: 4px;
+    font-size: 20px;
+    font-family: 'Varela Round';
+    color: #fff;
+}
+.title-container h2 {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+    font-size: 45px;
+    text-transform: uppercase;
+    padding: 20px 0;
+    color: #1E824C;
+}
+.title-container p {
+    font-family: 'Varela Round';
+    font-size: 15px;
+    text-align: center;
+}
+.about.col-lg-4 {
+    text-align: center;
+    padding: 0 30px;
+}
+.color {
+    padding: 50px 0;
+    background: #eef9ed;
+    width: 100%;
+}
+.light {
+    padding: 50px 0 80px;
+}
+.about a:hover {
+    text-decoration: none;
+    transition: all ease 0.3s;
+}
+.about p {
+    text-align: justify;
+    font-family: 'Varela Round';
+}
+.about h3 {
+    font-family: 'Comfortaa', cursive;
+}
+.about-container {
+    padding-top: 20px;
+}
+}
+>>>>>>> 1ea60d053b1e75b619da9ec20c94c7f484333462

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Varela+Round');
 @media (min-width: 768px){
+<<<<<<< HEAD
       /* Header */
 h2.logo {
   text-align: center;
@@ -133,6 +134,25 @@ img.model {
 .landing-about-container {
   padding-top: 20px;
 }
+=======
+	.landing-cover {
+		width: 100%;
+		background: #00E640;
+		height: 100vh;
+		
+	}
+	.header.container {
+		padding: 20px 10%;
+		background: #fff0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+	}	
+	.cover-content {
+		padding-top: 12vh;
+	}
+>>>>>>> 1ea60d053b1e75b619da9ec20c94c7f484333462
 	.login-cover-background {
 		position: absolute;
 		top: 0;
@@ -210,4 +230,13 @@ span.psw {
 .back-container {
 	padding-top: 5px;
 }
+<<<<<<< HEAD
 }
+=======
+img.model {
+    width: 75%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+}
+>>>>>>> 1ea60d053b1e75b619da9ec20c94c7f484333462
