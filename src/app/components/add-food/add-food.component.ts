@@ -1,6 +1,7 @@
 import { Ingredient } from './../../classes/ingredient';
 import { Food } from './../../classes/food';
 import { Component, OnInit } from '@angular/core';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -30,59 +31,52 @@ export class AddFoodComponent implements OnInit {
     { value: 'gram', viewValue: 'gram' },
     { value: 'chục', viewValue: 'chục' }
   ];
+  dataSource = new MatTableDataSource<Ingredient>();
   displayedColumns = ['select', 'name', 'unit', 'amount'];
-  dataSource = this.food.ingredients;
   ingreForm: FormGroup;
   selectedCheckbox = [];
   lastSelection = 0;
   haveSelection = false;
 
   constructor(private formBuilder: FormBuilder, private foodService: FoodService) {
+
+  }
+
+
+  ngOnInit() {
+
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
       body: ['', Validators.required],
       tags: [[], Validators.required],
       backdrop: ['', Validators.required],
-      ingreName: ['', Validators.required],
-      ingreAmount: ['', [Validators.required, Validators.pattern('[0-9]+')]]
-    });
-
-    this.ingre.unit = this.units[0].value;
-    this.ingreForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      unit: new FormControl('', Validators.required),
-      price: new FormControl('', [
+      ingreName: new FormControl('', Validators.required),
+      ingreUnit: new FormControl('', Validators.required),
+      ingreAmount: new FormControl('', [
         Validators.required,
         Validators.pattern('[0-9]+')
       ]),
-      amount: new FormControl('', [
+    });
+
+    this.ingre.unit = this.units[1].value;
+    this.ingreForm = new FormGroup({
+      ingreName: new FormControl('', Validators.required),
+      ingreUnit: new FormControl('', Validators.required),
+      ingreAmount: new FormControl('', [
         Validators.required,
         Validators.pattern('[0-9]+')
-      ])
+      ]),
+      checkbox: new FormControl(false, ),
     });
-  }
 
-
-  ngOnInit() {
     this.food.share = 0;
     this.food.like = 0;
     this.food.comment = 0;
     this.food.view = 0;
     this.food.postedAt = new Date();
+    this.food.ingredients = new Array<Ingredient>();
+    this.ingre.unit = this.units[1].value;
 
-    this.ingre.unit = this.units[0].value;
-    this.ingreForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      unit: new FormControl('', Validators.required),
-      price: new FormControl('', [
-        Validators.required,
-        Validators.pattern('[0-9]+')
-      ]),
-      amount: new FormControl('', [
-        Validators.required,
-        Validators.pattern('[0-9]+')
-      ])
-    });
   }
 
 
@@ -141,6 +135,9 @@ export class AddFoodComponent implements OnInit {
 
   addIngre() {
     this.food.ingredients.push(this.ingre);
+    this.dataSource.data = this.food.ingredients;
+    this.ingre = <Ingredient>{};
+    this.ingre.unit = this.units[1].value;
   }
 
   deleteIngre() {
@@ -150,12 +147,16 @@ export class AddFoodComponent implements OnInit {
             this.selectedCheckbox[_i] = false;
         }
     }
+    this.dataSource.data = this.food.ingredients;
     this.haveSelection = false;
     this.ingre = <Ingredient>{};
-    this.ingre.unit = this.units[0].value;
+    this.ingre.unit = this.units[1].value;
   }
 
   updateIngre() {
     this.food.ingredients[this.lastSelection] = this.ingre;
+    this.dataSource.data = this.food.ingredients;
+    this.ingre = <Ingredient>{};
+    this.ingre.unit = this.units[1].value;
   }
 }

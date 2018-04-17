@@ -10,6 +10,6 @@ export interface Food {
   title: string;
   view: number;
   tags: {};
-  ingredients: [Ingredient];
+  ingredients: Ingredient[];
   id: String;
 }
