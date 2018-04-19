@@ -210,4 +210,44 @@ span.psw {
 .back-container {
 	padding-top: 5px;
 }
+/* logo */
+img.logo {
+  max-width: 100px;
+}
+.mat-raised-button:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+.mat-btn-container {
+  padding: 15px 0;
+}
+.example-container.mat-elevation-z8 {
+  box-shadow: none !important;
+  border: 1px solid #CCCCCC;
+  border-bottom: none;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+.title-container-admin label {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1E824C;
+}
+.title-container-admin {
+  padding: 10px 0;
+}
+.btn-container {
+  padding: 15px 0;
+}
+.cover-thumbnail-container {
+  width: 100px;
+  max-height: 120px;
+}
+img.cover-thumbnail {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  padding: 5px;
+  border-radius: 20px;
+}
 }

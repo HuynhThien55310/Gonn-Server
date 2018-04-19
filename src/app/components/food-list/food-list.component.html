@@ -1,9 +1,9 @@
-
-
-  <button mat-raised-button (click)="addFood()">Thêm</button>
-  <button mat-raised-button (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
-  <button mat-raised-button (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
-
+<div class="container">
+  <div class="btn-container">
+    <button class="cancelbtn" (click)="addFood()">Thêm</button>
+    <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
+    <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
+  </div>
   <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
   <!-- Checkbox Column -->
@@ -25,7 +25,7 @@
       <!-- Price Column -->
       <ng-container matColumnDef="backdrop">
         <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <img src="{{element.backdrop}}" style="width: 100px"></mat-cell>
+        <mat-cell *matCellDef="let element"> <div class="cover-thumbnail-container"><img class="cover-thumbnail"  src="{{element.backdrop}}"></div> </mat-cell>
       </ng-container>
 
       <!-- Unit Column -->
@@ -44,3 +44,4 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
     </mat-table>
   </div>
+</div>
