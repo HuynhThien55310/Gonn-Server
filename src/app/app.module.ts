@@ -24,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddIngredientComponent } from './components/add-ingredient/add-ingredient.component';
 import { QuillModule } from 'ngx-quill';
 import { MatInputModule, MatFormFieldModule, MatTableModule, MatButtonModule, MatSelectModule, MatOptionModule } from '@angular/material';
-import { MatCheckboxModule } from '@angular/material';
+import { MatCheckboxModule, MatPaginatorModule, MatDialogModule } from '@angular/material';
+import { DialogComponent } from './components/add-food/add-food.component';
 TagInputModule.withDefaults({
   tagInput: {
     secondaryPlaceholder: 'Nhập loại món ăn'
@@ -41,8 +42,11 @@ TagInputModule.withDefaults({
     AddFoodComponent,
     AddIngredientComponent,
     EditFoodComponent,
+    DialogComponent
 
-
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,9 @@ TagInputModule.withDefaults({
     QuillModule,
     MatSelectModule,
     MatOptionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [AuthService, FoodService, IngredientService],
   bootstrap: [AppComponent]

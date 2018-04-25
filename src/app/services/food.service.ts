@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class FoodService {
   foodCollection: AngularFirestoreCollection<Food>;
-  foods: Observable<Food[]>;
+  foodItem: AngularFirestoreDocument<Food>;
   constructor(private afs: AngularFirestore,
     private router: Router) {
       this.foodCollection = this.afs.collection('foods');
@@ -27,6 +27,14 @@ export class FoodService {
   }
 
   getFoodList() {
-    return this.afs.collection('foods', ref => ref.orderBy('postedAt')).valueChanges();
+    return this.afs.collection('foods', ref => ref.orderBy('postedAt', 'desc')).valueChanges();
+  }
+
+  getFood(id) {
+    return this.afs.doc<Food>('foods/' + id).valueChanges();
+  }
+
+  updateFood(food) {
+    return this.afs.doc<Food>('foods/' + food.id).update(food);
   }
 }

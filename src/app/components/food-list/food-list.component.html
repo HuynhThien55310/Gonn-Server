@@ -5,6 +5,11 @@
   <button mat-raised-button (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
 
   <div class="example-container mat-elevation-z8">
+      <div class="example-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
+          </mat-form-field>
+        </div>
     <mat-table #table [dataSource]="dataSource">
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -19,7 +24,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
-        <mat-cell *matCellDef="let element" > {{element.title}} </mat-cell>
+        <mat-cell *matCellDef="let element" hr> <a href="/food/edit/{{element.id}}">{{element.title}}</a> </mat-cell>
       </ng-container>
 
       <!-- Price Column -->
@@ -37,10 +42,15 @@
       <!-- Amount Column -->
       <ng-container matColumnDef="postedAt">
         <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.postedAt | date:"dd/MM/yy"}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
     </mat-table>
+    <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
   </div>

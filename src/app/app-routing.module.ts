@@ -21,7 +21,11 @@ const appRoutes: Routes = [
     component: FoodListComponent
   },
   {
-    path: 'add-food',
+    path: 'food/edit/:id',
+    component: AddFoodComponent
+  },
+  {
+    path: 'food/add',
     component: AddFoodComponent
   },
   {

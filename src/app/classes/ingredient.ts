@@ -4,4 +4,5 @@ export interface Ingredient {
   price: number;
   amount: number;
   unit: string;
+  alias: string;
 }

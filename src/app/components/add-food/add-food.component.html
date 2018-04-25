@@ -88,9 +88,6 @@
                         <mat-header-cell *matHeaderCellDef> Tên </mat-header-cell>
                         <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
                       </ng-container>
-
-
-
                       <!-- Unit Column -->
                       <ng-container matColumnDef="unit">
                         <mat-header-cell *matHeaderCellDef> Đơn vị </mat-header-cell>
@@ -112,7 +109,7 @@
 
               <div class="tag-container form-group">
                 <label for="tagsinput">Loại món ăn</label>
-                <tag-input [(ngModel)]="tags" [editable]="true" formControlName="tags" placeholder="Nhập loại món ăn">
+                <tag-input [(ngModel)]="tag" [editable]="true" formControlName="tag" placeholder="Nhập loại món ăn">
                 </tag-input>
               </div>
               <div class="title-container">
@@ -139,4 +136,5 @@
     </div>
   </div>
 </div>
+
 
