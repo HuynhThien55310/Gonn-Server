@@ -2745,11 +2745,10 @@ a.owner-name:hover {
 
 /* admin  */
 .admin-container {
-	margin-top: 50px;
 	padding-top: 50px;
 	padding-bottom: 50px;
 	background-color: #f9f9f9;
-	height: 92vh;
+	height: 100%;
 }
 ul.sidebar-list {
 	list-style-type: none;

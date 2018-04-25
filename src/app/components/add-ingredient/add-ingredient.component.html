@@ -1,23 +1,23 @@
-<div class="container">
+<div class="container list-container">
 <form [formGroup]="ingreForm">
 <mat-form-field>
-  <input matInput placeholder="Tên" [(ngModel)] = "ingre.name"  formControlName="name" required>
+  <input matInput placeholder="Name" [(ngModel)] = "ingre.name"  formControlName="name" required>
 </mat-form-field>
 <mat-form-field>
-  <input matInput placeholder="Giá" [(ngModel)] = "ingre.price"  formControlName="price" required pattern="[0-9]+">
+  <input matInput placeholder="Price" [(ngModel)] = "ingre.price"  formControlName="price" required pattern="[0-9]+">
 </mat-form-field>
-<mat-select placeholder="Đơn vị" style="width: 100px" [(ngModel)]="ingre.unit" formControlName = "unit">
+<mat-select placeholder="Unit" style="width: 100px" [(ngModel)]="ingre.unit" formControlName = "unit">
   <mat-option *ngFor="let unit of units" [value]="unit.value" >
     {{ unit.viewValue }}
   </mat-option>
 </mat-select>
 <mat-form-field>
-  <input matInput placeholder="Số lượng" [(ngModel)] = "ingre.amount"  formControlName="amount" required pattern="[0-9]+">
+  <input matInput placeholder="Quantity" [(ngModel)] = "ingre.amount"  formControlName="amount" required pattern="[0-9]+">
 </mat-form-field>
 <div class="btn-container">
-    <button class="cancelbtn" (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
-    <button class="cancelbtn" (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
-    <button class="cancelbtn" (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
+    <button class="cancelbtn" (click)="addIngre()" [disabled]="ingreForm.invalid">Add</button>
+    <button class="cancelbtn" (click)="deleteIngre()" [disabled]="!haveSelection">Delete</button>
+    <button class="cancelbtn" (click)="updateIngre()" [disabled]="!haveSelection">Edit</button>
 </div>
 
 </form>
@@ -25,7 +25,7 @@
   <mat-table #table [dataSource]="dataSource">
 <!-- Checkbox Column -->
 <ng-container matColumnDef="select">
-  <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
+  <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
   <mat-cell *matCellDef="let row; let ind = index">
     <mat-checkbox
     (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
@@ -35,25 +35,25 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Tên </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
     </ng-container>
 
     <!-- Price Column -->
     <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef> Giá </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
     </ng-container>
 
     <!-- Unit Column -->
     <ng-container matColumnDef="unit">
-      <mat-header-cell *matHeaderCellDef> Đơn vị </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
     </ng-container>
 
     <!-- Amount Column -->
     <ng-container matColumnDef="amount">
-      <mat-header-cell *matHeaderCellDef> Số lượng </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
     </ng-container>
 
