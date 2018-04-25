@@ -67,10 +67,11 @@
                   <mat-form-field>
                     <input matInput placeholder="Số lượng" [(ngModel)] = "ingre.amount"  formControlName="ingreAmount" required pattern="[0-9]+">
                   </mat-form-field>
-                  <button mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
-                  <button mat-raised-button (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
-                  <button mat-raised-button (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
-
+                  <div class="btn-container">
+                    <button class="cancelbtn" mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
+                    <button class="cancelbtn" mat-raised-button (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
+                    <button class="cancelbtn" mat-raised-button (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
+                  </div>
                   <div class="example-container mat-elevation-z8">
                     <mat-table #table [dataSource]="dataSource">
                   <!-- Checkbox Column -->
@@ -107,15 +108,16 @@
                 </form>
               </div>
 
-              <div class="tag-container form-group">
+              <div class="tag-container title-container form-group">               
                 <label for="tagsinput">Loại món ăn</label>
                 <tag-input [(ngModel)]="tag" [editable]="true" formControlName="tag" placeholder="Nhập loại món ăn">
                 </tag-input>
               </div>
-              <div class="title-container">
-                <label for="content">Nội dung</label>
-              </div>
+              
               <div class="editor-container form-group">
+                  <div class="title-container-admin">
+                      <label for="content">Nội dung</label>
+                    </div>
                 <quill-editor [style]="{height: '200px'}" [(ngModel)]="food.body" formControlName="body">
 
                 </quill-editor>
@@ -123,8 +125,8 @@
               </div>
 
               <div class="add-action-container form-group">
-                <div class="left-btn btn-save">
-                  <button mat-raised-button (click) = 'onSubmit()'>Lưu</button>
+                <div class="">
+                  <button class="cancelbtn"  (click) = 'onSubmit()'>Lưu</button>
                   <span>{{message}}</span>
                 </div>
               </div>
