@@ -108,12 +108,12 @@
                 </form>
               </div>
 
-              <div class="tag-container title-container form-group">               
+              <div class="tag-container title-container form-group">
                 <label for="tagsinput">Loại món ăn</label>
                 <tag-input [(ngModel)]="tag" [editable]="true" formControlName="tag" placeholder="Nhập loại món ăn">
                 </tag-input>
               </div>
-              
+
               <div class="editor-container form-group">
                   <div class="title-container-admin">
                       <label for="content">Nội dung</label>
@@ -127,10 +127,8 @@
               <div class="add-action-container form-group">
                 <div class="">
                   <button class="cancelbtn"  (click) = 'onSubmit()'>Lưu</button>
-                  <span>{{message}}</span>
                 </div>
               </div>
-
             </div>
           </div>
         </form>
@@ -138,5 +136,3 @@
     </div>
   </div>
 </div>
-
-

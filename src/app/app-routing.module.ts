@@ -5,9 +5,14 @@ import { FoodListComponent } from './components/food-list/food-list.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { UserComponent } from './components/user/user.component';
 
 
 const appRoutes: Routes = [
+  {
+    path: 'user',
+    component: UserComponent
+  },
   {
     path: 'ingredient',
     component: AddIngredientComponent

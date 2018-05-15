@@ -37,21 +37,21 @@ export class AddIngredientComponent implements OnInit, AfterViewInit {
 
   constructor(private ingreService: IngredientService) {}
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+    /**
+     * Set the paginator after the view init since this component will
+     * be able to query its view for the initialized paginator.
+     */
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+    }
 
   ngOnInit() {
     this.ingreService.getIngreList().subscribe(data => {
       this.dataSource.data = data;
     });
-  this.dataSource.filterPredicate = (data: Ingredient, filter: string) => data.alias.indexOf(filter) !== -1;
+    this.dataSource.filterPredicate = (data: Ingredient, filter: string) => data.alias.indexOf(filter) !== -1;
 
     this.ingre.unit = this.units[0].value;
     this.ingreForm = new FormGroup({

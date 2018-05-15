@@ -26,6 +26,8 @@ import { QuillModule } from 'ngx-quill';
 import { MatInputModule, MatFormFieldModule, MatTableModule, MatButtonModule, MatSelectModule, MatOptionModule } from '@angular/material';
 import { MatCheckboxModule, MatPaginatorModule, MatDialogModule } from '@angular/material';
 import { DialogComponent } from './components/add-food/add-food.component';
+import { UserComponent } from './components/user/user.component';
+import { UserService } from './services/user.service';
 TagInputModule.withDefaults({
   tagInput: {
     secondaryPlaceholder: 'Nhập loại món ăn'
@@ -42,7 +44,8 @@ TagInputModule.withDefaults({
     AddFoodComponent,
     AddIngredientComponent,
     EditFoodComponent,
-    DialogComponent
+    DialogComponent,
+    UserComponent
 
   ],
   entryComponents: [
@@ -70,7 +73,7 @@ TagInputModule.withDefaults({
     MatPaginatorModule,
     MatDialogModule
   ],
-  providers: [AuthService, FoodService, IngredientService],
+  providers: [AuthService, FoodService, IngredientService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

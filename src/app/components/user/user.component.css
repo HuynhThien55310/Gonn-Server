@@ -1,0 +1,36 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 45em;
+}
+
+.mat-column-select {
+  overflow: visible;
+  flex: 0 0 5em;
+}
+
+/* .mat-column-email {
+  flex: 0 0 20em;
+} */
+
+/* .mat-column-lastName {
+  flex: 0 0 30em;
+}
+
+.mat-column-firstName {
+  flex: 0 0 30em;
+} */
+
+.mat-column-disabled {
+  flex: 0 0 7em;
+}
+
+.mat-column-permission {
+  flex: 0 0 7em;
+}

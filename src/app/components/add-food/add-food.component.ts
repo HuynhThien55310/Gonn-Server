@@ -154,6 +154,7 @@ export class AddFoodComponent implements OnInit {
       this.food.backdrop = myReader.result;
     };
     myReader.readAsDataURL(file);
+    console.log(this.food.backdrop);
   }
 
   // ingredient
