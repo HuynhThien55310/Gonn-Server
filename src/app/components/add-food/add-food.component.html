@@ -10,27 +10,27 @@
           </div>
           <div class="admin-info-container">
             <a href="#">
-              <span>Admin</span>
+              <span>Quản trị</span>
             </a>
           </div>
         </div>
         <div class="sidebar">
           <div id="main-menu" class="list-group">
-            <a href="#sub-menu" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Food
+            <a href="#sub-menu" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Món ăn
               <span class="caret"></span>
             </a>
             <div class="collapse list-group-level1" id="sub-menu">
-              <a href="/admin/add-post" class="list-group-item" data-parent="#sub-menu">Add food</a>
-              <a href="/admin/view-post" class="list-group-item" data-parent="#sub-menu">Show food</a>
+              <a href="/admin/add-post" class="list-group-item" data-parent="#sub-menu">Thêm món ăn</a>
+              <a href="/admin/view-post" class="list-group-item" data-parent="#sub-menu">Hiển thị món ăn</a>
             </div>
-            <a href="#sub-menu2" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Ingredient
+            <a href="#sub-menu2" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Nguyên liệu
               <span class="caret"></span>
             </a>
             <div class="collapse list-group-level1" id="sub-menu2">
-              <a href="/admin/add-ingredient" class="list-group-item" data-parent="#sub-menu">Add ingredient</a>
-              <a href="/admin/view-ingredient" class="list-group-item" data-parent="#sub-menu">Show ingredient</a>
+              <a href="/admin/add-ingredient" class="list-group-item" data-parent="#sub-menu">Thêm nguyên liệu</a>
+              <a href="/admin/view-ingredient" class="list-group-item" data-parent="#sub-menu">Hiển thị nguyên liệu</a>
             </div>
-            <a href="#" class="list-group-item">Change password</a>
+            <a href="#" class="list-group-item">Đổi mật khẩu</a>
 
           </div>
 
@@ -42,11 +42,11 @@
 
             <div class="container col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-md-10 col-sm-10 col-lg-10">
               <div class="title-container form-group">
-                <label for="title">Title</label>
-                <input name="title" id="" placeholder="Enter title" [(ngModel)]="food.title" formControlName="title">
+                <label for="title">Tiêu đề</label>
+                <input name="title" id="" placeholder="Nhập tiêu đề" [(ngModel)]="food.title" formControlName="title">
               </div>
               <div class="title-container form-group">
-                <label for="backdrop">Cover</label>
+                <label for="backdrop">Ảnh bìa</label>
                 <input name="backdrop" id="" type="file" placeholder="Link ảnh bìa"
                 accept="image/*" (change)="changeListener($event)" formControlName="backdrop">
               </div>
@@ -68,15 +68,15 @@
                     <input matInput placeholder="Quantity" [(ngModel)] = "ingre.amount"  formControlName="ingreAmount" required pattern="[0-9]+">
                   </mat-form-field>
                   <div class="btn-container">
-                    <button class="cancelbtn" mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Add</button>
-                    <button class="cancelbtn" mat-raised-button (click)="deleteIngre()" [disabled]="!haveSelection">Delete</button>
-                    <button class="cancelbtn" mat-raised-button (click)="updateIngre()" [disabled]="!haveSelection">Edit</button>
+                    <button class="cancelbtn" mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
+                    <button class="cancelbtn" mat-raised-button (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
+                    <button class="cancelbtn" mat-raised-button (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
                   </div>
                   <div class="example-container mat-elevation-z8">
                     <mat-table #table [dataSource]="dataSource">
                   <!-- Checkbox Column -->
                   <ng-container matColumnDef="select">
-                    <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
                     <mat-cell *matCellDef="let row; let ind = index">
                       <mat-checkbox
                       (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" [ngModelOptions]="{standalone: true}">
@@ -86,18 +86,18 @@
 
                       <!-- Name Column -->
                       <ng-container matColumnDef="name">
-                        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef> Tên </mat-header-cell>
                         <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
                       </ng-container>
                       <!-- Unit Column -->
                       <ng-container matColumnDef="unit">
-                        <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef> Đơn vị </mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
                       </ng-container>
 
                       <!-- Amount Column -->
                       <ng-container matColumnDef="amount">
-                        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef> Số lượng </mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
                       </ng-container>
 
@@ -114,12 +114,13 @@
                 <tag-input [(ngModel)]="tag" [editable]="true" formControlName="tag" placeholder="Nhập loại món ăn">
 
 
+
                 </tag-input>
               </div>
 
               <div class="editor-container form-group">
                   <div class="title-container-admin">
-                      <label for="content">Content</label>
+                      <label for="content">Nội dung</label>
                     </div>
                 <quill-editor [style]="{height: '200px'}" [(ngModel)]="food.body" formControlName="body">
 
@@ -129,9 +130,14 @@
 
               <div class="add-action-container form-group">
                 <div class="">
+<<<<<<< HEAD
 
                   <button class="cancelbtn"  (click) = 'onSubmit()'>Lưu</button>
 
+=======
+                  <button class="cancelbtn"  (click) = 'onSubmit()'>Lưu</button>
+                  <span>{{message}}</span>
+>>>>>>> 91956e78dbadb234e9f735e53542ce7691f5103b
                 </div>
               </div>
             </div>
