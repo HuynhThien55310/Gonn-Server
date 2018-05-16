@@ -1,14 +1,14 @@
 <div class="container list-container">
   <div class="btn-container">
-    <button class="cancelbtn" (click)="addFood()">Add</button>
-    <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Delete</button>
-    <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Edit</button>
+    <button class="cancelbtn" (click)="addFood()">Thêm</button>
+    <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
+    <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
   </div>
   <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
-    <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
     <mat-cell *matCellDef="let row; let ind = index">
       <mat-checkbox
       (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
@@ -18,25 +18,25 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
         <mat-cell *matCellDef="let element" > {{element.title}} </mat-cell>
       </ng-container>
 
       <!-- Price Column -->
       <ng-container matColumnDef="backdrop">
-        <mat-header-cell *matHeaderCellDef> Cover </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
         <mat-cell *matCellDef="let element"> <div class="cover-thumbnail-container"><img class="cover-thumbnail"  src="{{element.backdrop}}"></div> </mat-cell>
       </ng-container>
 
       <!-- Unit Column -->
       <ng-container matColumnDef="author">
-        <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Tác giả </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
       </ng-container>
 
       <!-- Amount Column -->
       <ng-container matColumnDef="postedAt">
-        <mat-header-cell *matHeaderCellDef> Publish date </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
       </ng-container>
 
