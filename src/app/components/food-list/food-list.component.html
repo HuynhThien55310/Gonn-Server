@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container list-container">
   <div class="btn-container">
-    <button class="cancelbtn" (click)="addFood()">Thêm</button>
-    <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
-    <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
+    <button class="cancelbtn" (click)="addFood()">Add</button>
+    <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Delete</button>
+    <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Edit</button>
   </div>
   <div class="example-container mat-elevation-z8">
       <div class="example-header">
@@ -13,7 +13,7 @@
     <mat-table #table [dataSource]="dataSource">
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
-    <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
     <mat-cell *matCellDef="let row; let ind = index">
       <mat-checkbox
       (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
@@ -25,24 +25,30 @@
       <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
         <mat-cell *matCellDef="let element" hr> <a href="/food/edit/{{element.id}}">{{element.title}}</a> </mat-cell>
+
       </ng-container>
 
       <!-- Price Column -->
       <ng-container matColumnDef="backdrop">
-        <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Cover </mat-header-cell>
         <mat-cell *matCellDef="let element"> <div class="cover-thumbnail-container"><img class="cover-thumbnail"  src="{{element.backdrop}}"></div> </mat-cell>
       </ng-container>
 
       <!-- Unit Column -->
       <ng-container matColumnDef="author">
-        <mat-header-cell *matHeaderCellDef> Tác giả </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
       </ng-container>
 
       <!-- Amount Column -->
       <ng-container matColumnDef="postedAt">
+<<<<<<< HEAD
         <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.postedAt | date:"dd/MM/yy"}} </mat-cell>
+=======
+        <mat-header-cell *matHeaderCellDef> Publish date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
+>>>>>>> 56ee6d34fffa610b341254ff6f33e45940a4e946
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
