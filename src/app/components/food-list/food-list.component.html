@@ -1,47 +1,85 @@
 <div class="container list-container">
-  <div class="btn-container">
-    <button class="cancelbtn" (click)="addFood()">Thêm</button>
-    <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
-    <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
+    <div class="left-section col-md-2 col-lg-2">
+        <div class="admin-header-wrapper">
+          <div class="admin-ava-container">
+            <a href="#" class="admin-ava">
+              <img src="assets/images/a1.jpg" alt="Braden Hamm">
+            </a>
+          </div>
+          <div class="admin-info-container">
+            <a href="#">
+              <span>Quản trị</span>
+            </a>
+          </div>
+        </div>
+        <div class="sidebar">
+          <div id="main-menu" class="list-group">
+            <a href="#sub-menu" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Món ăn
+              <span class="caret"></span>
+            </a>
+            <div class="collapse list-group-level1" id="sub-menu">
+              <a href="/admin/add-post" class="list-group-item" data-parent="#sub-menu">Thêm món ăn</a>
+              <a href="/admin/view-post" class="list-group-item" data-parent="#sub-menu">Hiển thị món ăn</a>
+            </div>
+            <a href="#sub-menu2" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Nguyên liệu
+              <span class="caret"></span>
+            </a>
+            <div class="collapse list-group-level1" id="sub-menu2">
+              <a href="/admin/add-ingredient" class="list-group-item" data-parent="#sub-menu">Thêm nguyên liệu</a>
+              <a href="/admin/view-ingredient" class="list-group-item" data-parent="#sub-menu">Hiển thị nguyên liệu</a>
+            </div>
+            <a href="#" class="list-group-item">Đổi mật khẩu</a>
+
+          </div>
+
+        </div>
+      </div>
+  <div class="col-md-10 col-lg-10 right-section">
+      <div class="btn-container">
+          <button class="cancelbtn" (click)="addFood()">Thêm</button>
+          <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
+          <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
+        </div>
+        <div class="example-container mat-elevation-z8">
+          <mat-table #table [dataSource]="dataSource">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
+          <mat-cell *matCellDef="let row; let ind = index">
+            <mat-checkbox
+            (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+      
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
+              <mat-cell *matCellDef="let element" > {{element.title}} </mat-cell>
+            </ng-container>
+      
+            <!-- Price Column -->
+            <ng-container matColumnDef="backdrop">
+              <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
+              <mat-cell *matCellDef="let element"> <div class="cover-thumbnail-container"><img class="cover-thumbnail"  src="{{element.backdrop}}"></div> </mat-cell>
+            </ng-container>
+      
+            <!-- Unit Column -->
+            <ng-container matColumnDef="author">
+              <mat-header-cell *matHeaderCellDef> Tác giả </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
+            </ng-container>
+      
+            <!-- Amount Column -->
+            <ng-container matColumnDef="postedAt">
+              <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
+            </ng-container>
+      
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
+          </mat-table>
+        </div>
   </div>
-  <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource">
-  <!-- Checkbox Column -->
-  <ng-container matColumnDef="select">
-    <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
-    <mat-cell *matCellDef="let row; let ind = index">
-      <mat-checkbox
-      (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
-      </mat-checkbox>
-    </mat-cell>
-  </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
-        <mat-cell *matCellDef="let element" > {{element.title}} </mat-cell>
-      </ng-container>
-
-      <!-- Price Column -->
-      <ng-container matColumnDef="backdrop">
-        <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <div class="cover-thumbnail-container"><img class="cover-thumbnail"  src="{{element.backdrop}}"></div> </mat-cell>
-      </ng-container>
-
-      <!-- Unit Column -->
-      <ng-container matColumnDef="author">
-        <mat-header-cell *matHeaderCellDef> Tác giả </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
-      </ng-container>
-
-      <!-- Amount Column -->
-      <ng-container matColumnDef="postedAt">
-        <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
-    </mat-table>
-  </div>
+  
 </div>
