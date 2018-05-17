@@ -9,7 +9,8 @@ export interface Food {
   share: number;
   title: string;
   view: number;
-  tags: {};
+  tag: {};
   ingredients: Ingredient[];
   id: String;
+  alias: string;
 }

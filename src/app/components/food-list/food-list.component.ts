@@ -1,10 +1,10 @@
 import { FoodService } from './../../services/food.service';
 import { Observable } from 'rxjs/Observable';
 import { Food } from './../../classes/food';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataSource } from '@angular/cdk/table';
-
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -17,16 +17,37 @@ import {
   templateUrl: './food-list.component.html',
   styleUrls: ['./food-list.component.css']
 })
-export class FoodListComponent implements OnInit {
+export class FoodListComponent implements OnInit, AfterViewInit {
   food = <Food>{};
   displayedColumns = ['select', 'title', 'backdrop', 'author', 'postedAt'];
-  dataSource = new FoodDataSource(this.foodService);
+  dataSource = new MatTableDataSource();
+
   selectedCheckbox = [];
   selectedId = [];
   haveSelection = false;
   constructor(private foodService: FoodService, private router: Router) { }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  /**
+   * Set the paginator after the view init since this component will
+   * be able to query its view for the initialized paginator.
+   */
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   ngOnInit() {
+    this.foodService.getFoodList().subscribe(data => {
+        this.dataSource.data = data;
+    });
+    this.dataSource.filterPredicate = (data: Food, filter: string) => data.alias.indexOf(filter) !== -1;
+  }
+
+  applyFilter(filterValue: string) {
+    console.log(filterValue);
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   cellCheckToggle(row, index) {
@@ -52,28 +73,13 @@ export class FoodListComponent implements OnInit {
   }
 
   updateFood() {
-    this.router.navigate(['/add-food/' + this.food.id]);
+    this.router.navigate(['/food/edit/' + this.food.id]);
   }
 
   addFood() {
-    this.router.navigate(['/add-food']);
+    this.router.navigate(['/food/add']);
   }
 
 }
 
-export class FoodDataSource extends DataSource<any> {
-  foodList: Observable<{}[]>;
-  length = 0;
-  constructor(private foodService: FoodService) {
-    super();
-  }
-  connect() {
-    this.foodList = this.foodService.getFoodList();
-    this.foodList.subscribe(result => {
-      this.length = result.length;
-    });
-    return this.foodList;
-  }
 
-  disconnect() {}
-}
