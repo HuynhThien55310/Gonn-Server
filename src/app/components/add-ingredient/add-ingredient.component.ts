@@ -28,7 +28,7 @@ export class AddIngredientComponent implements OnInit, AfterViewInit {
     { value: 'l', viewValue: 'l' },
     { value: 'ml', viewValue: 'ml' }
   ];
-  displayedColumns = ['select', 'name', 'price', 'unit', 'amount'];
+  displayedColumns = ['select', 'name', 'price', 'calories', 'unit', 'amount'];
   dataSource = new MatTableDataSource();
   ingreForm: FormGroup;
   selectedCheckbox = [];
@@ -62,6 +62,10 @@ export class AddIngredientComponent implements OnInit, AfterViewInit {
         Validators.pattern('[0-9]+')
       ]),
       amount: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+      ]),
+      calories: new FormControl('', [
         Validators.required,
         Validators.pattern('[0-9]+')
       ])
@@ -118,11 +122,17 @@ export class AddIngredientComponent implements OnInit, AfterViewInit {
     this.haveSelection = false;
     this.ingre = <Ingredient>{};
     this.ingre.unit = this.units[0].value;
+    this.selectedCheckbox = [];
+    this.selectedId = [];
+    this.haveSelection = false;
   }
 
   updateIngre() {
     this.ingre.alias = this.createAlias(this.ingre.name);
     this.ingreService.updateIngre(this.ingre);
+    this.selectedCheckbox = [];
+    this.selectedId = [];
+    this.haveSelection = false;
   }
 }
 

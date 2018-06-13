@@ -1,5 +1,4 @@
 <div class="container list-container">
-<<<<<<< HEAD
     <div class="left-section col-md-2 col-lg-2">
         <div class="admin-header-wrapper">
           <div class="admin-ava-container">
@@ -36,52 +35,6 @@
         </div>
       </div>
   <div class="col-md-10 col-lg-10 right-section">
-      <div class="btn-container">
-          <button class="cancelbtn" (click)="addFood()">Thêm</button>
-          <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
-          <button class="cancelbtn" (click)="updateFood()" [disabled]="!haveSelection">Sửa</button>
-        </div>
-        <div class="example-container mat-elevation-z8">
-          <mat-table #table [dataSource]="dataSource">
-        <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
-          <mat-header-cell *matHeaderCellDef> Chọn </mat-header-cell>
-          <mat-cell *matCellDef="let row; let ind = index">
-            <mat-checkbox
-            (change)="cellCheckToggle(row, ind)" [(ngModel)] = "selectedCheckbox[ind]" >
-            </mat-checkbox>
-          </mat-cell>
-        </ng-container>
-      
-            <!-- Name Column -->
-            <ng-container matColumnDef="title">
-              <mat-header-cell *matHeaderCellDef> Tiêu đề </mat-header-cell>
-              <mat-cell *matCellDef="let element" > {{element.title}} </mat-cell>
-            </ng-container>
-      
-            <!-- Price Column -->
-            <ng-container matColumnDef="backdrop">
-              <mat-header-cell *matHeaderCellDef> Ảnh bìa </mat-header-cell>
-              <mat-cell *matCellDef="let element"> <div class="cover-thumbnail-container"><img class="cover-thumbnail"  src="{{element.backdrop}}"></div> </mat-cell>
-            </ng-container>
-      
-            <!-- Unit Column -->
-            <ng-container matColumnDef="author">
-              <mat-header-cell *matHeaderCellDef> Tác giả </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
-            </ng-container>
-      
-            <!-- Amount Column -->
-            <ng-container matColumnDef="postedAt">
-              <mat-header-cell *matHeaderCellDef> Ngày đăng </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.postedAt | date:'shortTime'}} </mat-cell>
-            </ng-container>
-      
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"  ></mat-row>
-          </mat-table>
-        </div>
-=======
   <div class="btn-container">
     <button class="cancelbtn" (click)="addFood()">Thêm</button>
     <button class="cancelbtn" (click)="deleteFood()" [disabled]="!haveSelection">Xóa</button>
@@ -148,7 +101,6 @@
                  [pageSizeOptions]="[5, 10, 20]"
                  [showFirstLastButtons]="true">
   </mat-paginator>
->>>>>>> 6aca905adaba0727e17a52b5b6897d8fde829f6c
   </div>
-  
+
 </div>

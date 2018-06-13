@@ -12,5 +12,6 @@ export const environment = {
     projectId: 'gonn-86b4a',
     storageBucket: 'gonn-86b4a.appspot.com',
     messagingSenderId: '947724074034'
-  }
+  },
+
 };

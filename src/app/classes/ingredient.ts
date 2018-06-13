@@ -5,4 +5,5 @@ export interface Ingredient {
   amount: number;
   unit: string;
   alias: string;
+  calories: number;
 }
