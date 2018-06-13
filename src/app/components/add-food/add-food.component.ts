@@ -54,7 +54,8 @@ export class AddFoodComponent implements OnInit {
       ingreUnit: new FormControl('', Validators.required),
       ingreAmount: new FormControl('', [
         Validators.required,
-        Validators.pattern('[0-9]+')
+        Validators.pattern('[0-9]+'),
+        Validators.min(0)
       ])
     });
 
@@ -64,7 +65,8 @@ export class AddFoodComponent implements OnInit {
       ingreUnit: new FormControl('', Validators.required),
       ingreAmount: new FormControl('', [
         Validators.required,
-        Validators.pattern('[0-9]+')
+        Validators.pattern('[0-9]+'),
+        Validators.min(0)
       ]),
       checkbox: new FormControl(false)
     });

@@ -65,7 +65,7 @@
                     </mat-option>
                   </mat-select>
                   <mat-form-field>
-                    <input matInput placeholder="Quantity" [(ngModel)] = "ingre.amount"  formControlName="ingreAmount" required pattern="[0-9]+">
+                    <input matInput placeholder="Quantity" type="number" [(ngModel)] = "ingre.amount"  formControlName="ingreAmount" required pattern="[0-9]+">
                   </mat-form-field>
                   <div class="btn-container">
                     <button class="cancelbtn" mat-raised-button (click)="addIngre()" [disabled]="ingreForm.invalid">Thêm</button>
