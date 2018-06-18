@@ -193,6 +193,8 @@ export class AddFoodComponent implements OnInit {
     this.haveSelection = false;
     this.ingre = <Ingredient>{};
     this.ingre.unit = this.units[1].value;
+    this.selectedCheckbox = [];
+    this.lastSelection = 0;
   }
 
   updateIngre() {
@@ -200,6 +202,8 @@ export class AddFoodComponent implements OnInit {
     this.dataSource.data = this.food.ingredients;
     this.ingre = <Ingredient>{};
     this.ingre.unit = this.units[1].value;
+    this.selectedCheckbox = [];
+    this.lastSelection = 0;
   }
 
   // dialog
