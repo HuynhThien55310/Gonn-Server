@@ -1,5 +1,100 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Varela+Round');
-@media (min-width: 768px){
+@media only screen and (max-width: 411px){
+  .landing-content {
+    text-align: center;
+}
+  .color {
+    padding: 50px 0;
+    background: #eef9ed;
+    width: 100%;
+}
+  img.model {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+  .landing-title-container.clearfix {
+    text-align: center;
+}
+  .landing-about.col-lg-4 {
+    text-align: center;
+}
+  .example-container.mat-elevation-z8 {
+    padding: 5px;
+}
+  .cover-thumbnail-container {
+    width: 100px;
+    max-height: 60px;
+    margin: auto;
+    padding: 5px;
+}
+  .cancelbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+}
+  .btn-container {
+    padding: 15px 0;
+    text-align: center;
+}
+  .right-section{
+    width: 100%;
+  }
+  .col-lg-2.login {
+    text-align: center;
+}
+  .menu li {
+    padding-bottom: 3px;
+    font-size: 18px;
+}
+  a.login-btn {
+    padding: 7px 25px;
+    background: #ffffff;
+    border-radius: 4px;
+    color: #1E824C;
+    font-family: 'Varela Round';
+}
+  a.header-menu {
+    color: #fff;
+    font-family: 'Comfortaa';
+    font-weight: bold;
+  }
+  .menu-container {
+    padding: 8px 0;
+    float: none;
+    text-align: center;
+  }
+  .header-background {
+    width: 100%;
+    height: 370px;
+    background: #c14848;
+    position: absolute;
+}
+.header.container {
+  padding: 20px 0;
+  background: #fff0;
+  margin-bottom: 30px;
+}
+.logo {
+  width: 100%;
+  float: none;
+  text-align: center;
+  margin: 0 0 1em 0;
+}
+}
+@media only screen and (max-width: 768px){
+  .right-section {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px){
+  /* .right-section {
+    width: 83%;
+  } */
       /* Header */
 h2.logo {
   text-align: center;
