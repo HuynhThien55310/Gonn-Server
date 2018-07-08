@@ -38,14 +38,14 @@ a.header-menu:hover{
 a.header-menu:hover {
   text-decoration: none;
 }
-a.login-btn {
+button.login-btn {
   padding: 7px 25px;
   background: #ffffff;
   border-radius: 4px;
   color: #1E824C;
   font-family: 'Varela Round';
 }
-a.login-btn:hover {
+button.login-btn:hover {
   text-decoration: none;
   background: #ffffffe8;
   transition: all ease 0.3s;
@@ -219,7 +219,7 @@ img.logo {
 }
 .mat-btn-container {
   padding: 15px 0;
-  
+
 }
 .example-container.mat-elevation-z8 {
   box-shadow: none !important;

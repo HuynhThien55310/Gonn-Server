@@ -35,20 +35,14 @@ export class AuthService {
     this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
                .then(() => {
                 console.log('success');
-                // console.log(this.afAuth.auth.currentUser.uid);
-                // this.afs.doc(`users/${this.afAuth.auth.currentUser.uid}`)
-                // .valueChanges().subscribe(res => {
-
-                // });
-
-                // this.user$.subscribe(user => this.user = user);
-                // console.log(this.user);
+                this.router.navigate(['food']);
               })
                .catch(error => console.log(error));
   }
 
   signOut() {
     this.afAuth.auth.signOut();
+    this.router.navigate(['/']);
   }
   ///// Role-based Authorization //////
 

@@ -1,3 +1,4 @@
+import { AdminGuard } from './guards/admin.guard';
 import { IngredientService } from './services/ingredient.service';
 import { EditFoodComponent } from './components/edit-food/edit-food.component';
 import { FoodService } from './services/food.service';
@@ -28,6 +29,7 @@ import { MatCheckboxModule, MatPaginatorModule, MatDialogModule } from '@angular
 import { DialogComponent } from './components/add-food/add-food.component';
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
+import { AuthorGuard } from './guards/author.guard';
 TagInputModule.withDefaults({
   tagInput: {
     secondaryPlaceholder: 'Nhập loại món ăn'
@@ -73,7 +75,7 @@ TagInputModule.withDefaults({
     MatPaginatorModule,
     MatDialogModule
   ],
-  providers: [AuthService, FoodService, IngredientService, UserService],
+  providers: [AuthService, FoodService, IngredientService, UserService, AuthorGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,13 +7,13 @@
 
       <div class="col-lg-8 menu-container">
           <ul class="menu">
-              <li><a class="header-menu" href="#">Tải ngay</a></li>
-              <li><a class="header-menu" href="#">Giới thiệu</a></li>
-              <li><a class="header-menu" href="#">Demo</a></li>
+              <li><a class="header-menu" (click)="btnFood()" >{{!isLogin ? "Tải ngay": "Bài viết"}}</a></li>
+              <li><a class="header-menu" (click)="btnIngre()" >{{!isLogin ? "Giới thiệu": "Nguyên liệu"}}</a></li>
+              <li><a class="header-menu" (click)="btnUser()" >{{!isLogin ? "Demo": "Tài khoản"}}</a></li>
           </ul>
       </div>
       <div class="col-lg-2 login">
-          <a class="login-btn" href="login">Đăng nhập</a>
+          <button class="login-btn" (click)="btnClick()"  >{{isLogin ? "Đăng xuất": "Đăng nhập"}}</button>
       </div>
 
   </div>

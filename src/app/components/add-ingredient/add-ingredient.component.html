@@ -18,15 +18,15 @@
               <span class="caret"></span>
             </a>
             <div class="collapse list-group-level1" id="sub-menu">
-              <a href="/admin/add-post" class="list-group-item" data-parent="#sub-menu">Thêm món ăn</a>
-              <a href="/admin/view-post" class="list-group-item" data-parent="#sub-menu">Hiển thị món ăn</a>
+              <a href="/food/add" class="list-group-item" data-parent="#sub-menu">Thêm món ăn</a>
+              <a href="/food" class="list-group-item" data-parent="#sub-menu">Hiển thị món ăn</a>
             </div>
             <a href="#sub-menu2" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Nguyên liệu
               <span class="caret"></span>
             </a>
             <div class="collapse list-group-level1" id="sub-menu2">
-              <a href="/admin/add-ingredient" class="list-group-item" data-parent="#sub-menu">Thêm nguyên liệu</a>
-              <a href="/admin/view-ingredient" class="list-group-item" data-parent="#sub-menu">Hiển thị nguyên liệu</a>
+              <a href="/ingredientt" class="list-group-item" data-parent="#sub-menu">Thêm nguyên liệu</a>
+              <a href="/ingredientt" class="list-group-item" data-parent="#sub-menu">Hiển thị nguyên liệu</a>
             </div>
             <a href="#" class="list-group-item">Đổi mật khẩu</a>
 
@@ -58,13 +58,13 @@
             <button class="cancelbtn" (click)="deleteIngre()" [disabled]="!haveSelection">Xóa</button>
             <button class="cancelbtn" (click)="updateIngre()" [disabled]="!haveSelection">Sửa</button>
           </div>
-      
+
         </form>
         <div class="example-container mat-elevation-z8">
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
           </mat-form-field>
-      
+
           <mat-table #table [dataSource]="dataSource">
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
@@ -74,13 +74,13 @@
                 </mat-checkbox>
               </mat-cell>
             </ng-container>
-      
+
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Tên </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
             </ng-container>
-      
+
             <!-- Price Column -->
             <ng-container matColumnDef="price">
               <mat-header-cell *matHeaderCellDef> Giá cả </mat-header-cell>
@@ -96,21 +96,21 @@
               <mat-header-cell *matHeaderCellDef> Đơn vị </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
             </ng-container>
-      
+
             <!-- Amount Column -->
             <ng-container matColumnDef="amount">
               <mat-header-cell *matHeaderCellDef> Số lượng </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
             </ng-container>
-      
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
-      
-      
+
+
           <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
           </mat-paginator>
         </div>
   </div>
-  
+
 </div>

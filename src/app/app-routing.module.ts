@@ -1,3 +1,5 @@
+import { AdminGuard } from './guards/admin.guard';
+import { AuthorGuard } from './guards/author.guard';
 import { AddIngredientComponent } from './components/add-ingredient/add-ingredient.component';
 import { AddFoodComponent } from './components/add-food/add-food.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,11 +13,11 @@ import { UserComponent } from './components/user/user.component';
 const appRoutes: Routes = [
   {
     path: 'user',
-    component: UserComponent
+    component: UserComponent, canActivate: [AdminGuard]
   },
   {
     path: 'ingredient',
-    component: AddIngredientComponent
+    component: AddIngredientComponent, canActivate: [AuthorGuard]
   },
   {
     path: 'login',
@@ -23,15 +25,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'food',
-    component: FoodListComponent
+    component: FoodListComponent, canActivate: [AuthorGuard]
   },
   {
     path: 'food/edit/:id',
-    component: AddFoodComponent
+    component: AddFoodComponent, canActivate: [AuthorGuard]
   },
   {
     path: 'food/add',
-    component: AddFoodComponent
+    component: AddFoodComponent, canActivate: [AuthorGuard]
   },
   {
     path: '',
