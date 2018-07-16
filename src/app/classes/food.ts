@@ -13,4 +13,5 @@ export interface Food {
   ingredients: Ingredient[];
   id: String;
   alias: string;
+  ingreTag: {};
 }

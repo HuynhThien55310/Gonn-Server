@@ -119,6 +119,10 @@ export class AddFoodComponent implements OnInit {
 
   onSubmit() {
     this.food.alias = this.createAlias(this.food.title);
+    this.food.ingreTag = {};
+    for (let i = 0; i < this.food.ingredients.length; i++) {
+      this.food.ingreTag[<any>this.food.ingredients[i].name] = true;
+    }
     console.log(this.createAlias(this.food.title));
     if (this.id === undefined) {
       this.food.postedAt = new Date();
